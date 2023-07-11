@@ -1,14 +1,34 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "@mui/material";
-function Login() {
-	const signIn = e => {
-        e.preventDefault();
-    };
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "./firebase";
 
-    const register = e => {
-        e.preventDefault();
-    }
+function Login() {
+	const history = useNavigate();
+	const signIn = (e) => {
+		e.preventDefault();
+
+		auth
+			.signInWithEmailAndPassword(email, password)
+			.then(auth => {
+				history.push("/");
+			})
+			.catch((error) => alert(error.message));
+	};
+
+	const register = (e) => {
+		e.preventDefault();
+
+		auth
+			.createUserWithEmailAndPassword(email, password)
+			.then((auth) => {
+				console.log(auth);
+				if (auth) {
+					history.push("/");
+				}
+			})
+			.catch((error) => alert(error.message));
+	};
 
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -48,7 +68,9 @@ function Login() {
 					By Signing-in you agree to Amazon's Conditions of Use & Sale.PLease
 					see our Privacy Notice,our Cookies Notice and our Interest-Based Ads
 				</p>
-				<button className="login_registeButton" onClick={register}>Create New Account</button>
+				<button className="login_registeButton" onClick={register}>
+					Create New Account
+				</button>
 			</div>
 		</div>
 	);

@@ -7,9 +7,7 @@ export const getBasketTotal = (basket) => {
 		return 0;
 	} else {
 		var amount = 0;
-		basket.map((item) => {
-			amount += item.price;
-		});
+		basket.map((item) => (amount += item.price));
 		return amount;
 	}
 
