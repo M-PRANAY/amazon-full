@@ -41,7 +41,7 @@ function Home() {
 					<Product
 						title="beat XP unbound NEO"
 						image="https://images-eu.ssl-images-amazon.com/images/I/61xQOD1ZPUL._AC_UL450_SR450,320_.jpg"
-						price={10}
+						price={10.00}
 						rating={2}
 					/>
 				</div>
@@ -49,7 +49,7 @@ function Home() {
 					<Product
 						title="boat immortal"
 						image="https://m.media-amazon.com/images/I/41w2pkIRKxL._SX300_SY300_QL70_FMwebp_.jpg"
-						price={5}
+						price={5.00}
 						rating={1}
 					/>
 				</div>
