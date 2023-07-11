@@ -5,18 +5,15 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 export default function Header() {
-
-	const[{basket},dispatch] = useStateValue();
+	const [{ basket }, dispatch] = useStateValue();
 
 	return (
 		<div className="header">
-			<Link to="/">
 				<img
 					className="header_logo"
 					src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
 					alt=""
 				/>
-			</Link>
 
 			<div className="header_search">
 				<input className="header_searchInput" type="text" />
@@ -24,10 +21,14 @@ export default function Header() {
 			</div>
 
 			<div className="header_nav">
-				<div className="header_option">
-					<span className="header_optionlineOne">Hello Guest</span>{" "}
-					<span className="header_optionlineTwo">Sign In</span>{" "}
-				</div>
+			
+				<Link to="/login">
+					<div className="header_option">
+						<span className="header_optionlineOne">Hello Guest</span>{" "}
+						<span className="header_optionlineTwo">Sign In</span>{" "}
+					</div>
+				</Link>
+
 				<div className="header_option">
 					<span className="header_optionlineOne">Returns</span>{" "}
 					<span className="header_optionlineTwo">and Orders</span>{" "}
@@ -37,11 +38,12 @@ export default function Header() {
 					<span className="header_optionlineTwo">Prime</span>{" "}
 				</div>
 				<div className="header_optionBasket">
-				<Link to="/checkout">
-					<ShoppingBasketIcon />
-
-				</Link>
-					<span className="header_optionlineTwo header_basketCount">{basket?.length}</span>
+					<Link to="/checkout">
+						<ShoppingBasketIcon />
+					</Link>
+					<span className="header_optionlineTwo header_basketCount">
+						{basket?.length}
+					</span>
 				</div>
 			</div>
 		</div>
