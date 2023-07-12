@@ -9,7 +9,7 @@ import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 
 function App() {
-	const [ {user},dispatch] = useStateValue();
+	const [{}, dispatch] = useStateValue();
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			console.log("The User Is >> ", authUser);
@@ -24,8 +24,8 @@ function App() {
 					user: null,
 				});
 			}
-		}); 
-	}, );
+		});
+	},[]);
 
 	return (
 		<Router>

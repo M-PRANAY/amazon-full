@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 export default function Header() {
-	const [{ basket, user }] = useStateValue();
+	const [{ basket, user },dispatch] = useStateValue();
 
 	const handleAuthentication = () => {
 		if (user) {
