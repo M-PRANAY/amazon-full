@@ -6,11 +6,26 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import { useEffect } from "react";
 import { auth } from "./firebase";
+import { useStateValue } from "./StateProvider";
 
 function App() {
+	const [ {user},dispatch] = useStateValue();
 	useEffect(() => {
-		auth.onAuthStateChanged
-	},[]);
+		auth.onAuthStateChanged((authUser) => {
+			console.log("The User Is >> ", authUser);
+			if (authUser) {
+				dispatch({
+					type: "SET_USER",
+					user: authUser,
+				});
+			} else {
+				dispatch({
+					type: "SET_USER",
+					user: null,
+				});
+			}
+		}); 
+	}, );
 
 	return (
 		<Router>
