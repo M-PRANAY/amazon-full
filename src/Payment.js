@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Payment.css";
 import { useStateValue } from "./StateProvider";
 import CheckoutProduct from "./CheckoutProduct";
@@ -23,6 +23,18 @@ function Payment() {
 	const elements = useElements();
 	const [succeeded, setSucceeded] = useState(false);
 	const [processing, setProcessing] = useState("");
+	const [clientSecret, setclientSecret] = useState(true);
+
+	// useEffect(() => {
+	// 	const getClientSecret = async () ={
+	// 		const response = await axios
+	// 	}
+
+	// 	getClientSecret();
+	// },[basket] 
+
+	// )
+
 	return (
 		<div className="payment">
 			<div className="payment_container">

@@ -34,6 +34,7 @@ function App() {
 
 	return (
 		<Router>
+			<Header />
 			<Routes>
 				<Route
 					path="/login"
@@ -48,7 +49,6 @@ function App() {
 					path="/"
 					element={
 						<>
-							<Header />
 							<Home />
 						</>
 					}
@@ -58,7 +58,7 @@ function App() {
 					path="/checkout"
 					element={
 						<>
-							<Header />
+							{/* <Header /> */}
 							<Checkout />
 						</>
 					}
